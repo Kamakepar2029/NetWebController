@@ -20,7 +20,7 @@ var xhr = new XMLHttpRequest();
 xhr.open('GET', '/get_ports', false);
 xhr.send();
 if (xhr.status != 200) {
-  alert( xhr.status + ': ' + xhr.statusText );
+  console.log( xhr.status + ': ' + xhr.statusText );
 } else {
   var polsd = '';
   var data = JSON.parse( xhr.responseText );
