@@ -2,10 +2,8 @@
 <head>
 <title></title>
 </head>
-<body>
-<header class="header">
-<h4>Ports</h4>
-</header>
+<body><header class="grid-content header-color">
+<div class="el-row"><a href="#" class="brand">Port Controller</a></div></header>
 <div class="content">
 <div class="control"></div>
 <div class="content__ports">
@@ -16,6 +14,7 @@
 function kolom(text){
     return ('<td>'+text+'</td>');
 }
+function solp(){
 var xhr = new XMLHttpRequest();
 xhr.open('GET', '/get_ports', false);
 xhr.send();
@@ -40,11 +39,14 @@ if (xhr.status != 200) {
   </tr>
 `;
   document.getElementById('port').innerHTML = pillow+polsd;
-}
+}}
+setInterval(solp,500);
 </script>
 </div>
 <style>
 table {
+width:100%;
+margin-top:20px;
 font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
 font-size: 14px;
 border-collapse: collapse;
@@ -66,7 +68,10 @@ background: #D8E6F3;
 th:last-child {
 text-align: left;
 }
+body{background-color:#fafafa;margin:0;font-family:-apple-system,BlinkMacSystemFont,Helvetica Neue,sans-serif}header{width:100%;height:60px}.header-color{background:#58b7ff}#content{margin-top:20px;padding-right:40px}.brand{color:#fff;background-color:transparent;margin-left:20px;float:left;line-height:25px;font-size:25px;padding:15px;height:30px;text-decoration:none}
+.el-row{position:relative;box-sizing:border-box}.el-row:after,.el-row:before{display:table;content:""}.el-row:after{clear:both}.el-row--flex{display:-ms-flexbox;display:flex}.el-row--flex:after,.el-row--flex:before{display:none}.el-row--flex.is-justify-center{-ms-flex-pack:center;justify-content:center}.el-row--flex.is-justify-end{-ms-flex-pack:end;justify-content:flex-end}.el-row--flex.is-justify-space-between{-ms-flex-pack:justify;justify-content:space-between}.el-row--flex.is-justify-space-around{-ms-flex-pack:distribute;justify-content:space-around}.el-row--flex.is-align-middle{-ms-flex-align:center;align-items:center}.el-row--flex.is-align-bottom{-ms-flex-align:end;align-items:flex-end}
 </style>
+
 </div>
 </body>
 </html>
