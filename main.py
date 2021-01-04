@@ -4,7 +4,10 @@ from flask_mail import Mail, Message
 import pickledb
 import json
 
-def render_temp(args,filename):
+def render_temp(argss,filename):
+    htmlfile = open('templates/'+filename,'r').read()
+    for me in argss:
+        htmlfile = htmlfile.replace('%'+me+'%',argss[me])
     return htmlfile
 
 db = pickledb.load('log.db', False)
