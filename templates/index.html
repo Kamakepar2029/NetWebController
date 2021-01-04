@@ -9,38 +9,64 @@
 <div class="content">
 <div class="control"></div>
 <div class="content__ports">
-<table id="ports">
-<tr>
-  <th>Company</th>
-  <th>Q1</th>
-  <th>Q2</th>
-  <th>Q3</th>
-  <th>Q4</th>
-  </tr>
+<table id="port">
 
 </table>
 <script>
+function kolom(text){
+    return ('<td>'+text+'</td>');
+}
 var xhr = new XMLHttpRequest();
-xhr.open('GET', 'phones.json', false);
+xhr.open('GET', '/get_ports', false);
 xhr.send();
 if (xhr.status != 200) {
   alert( xhr.status + ': ' + xhr.statusText );
 } else {
+  var polsd = '';
   var data = JSON.parse( xhr.responseText );
-}
-
-var pillow = `
+  for (let index = 0; index < data.length; index++) {
+    const element = data[index];
+    polsd = polsd + '<tr>'+kolom(data[index]['type'])+kolom(data[index]['recvq'])+kolom(data[index]['sendq'])+kolom(data[index]['hostport'])+kolom(data[index]['typli'])+kolom(data[index]['pid'])+kolom(data[index]['name'])+'</tr>';
+  }
+  var pillow = `
 <tr>
   <th>TCP Ports</th>
   <th>QIN</th>
   <th>QOUT</th>
+  <th>HostPort</th>
   <th>Mode</th>
   <th>PID</th>
   <th>Program Name<th>
   </tr>
 `;
+  document.getElementById('port').innerHTML = pillow+polsd;
+}
 </script>
 </div>
+<style>
+table {
+font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+font-size: 14px;
+border-collapse: collapse;
+text-align: center;
+}
+th, td:first-child {
+background: #AFCDE7;
+color: white;
+padding: 10px 20px;
+}
+th, td {
+border-style: solid;
+border-width: 0 1px 1px 0;
+border-color: white;
+}
+td {
+background: #D8E6F3;
+}
+th:last-child {
+text-align: left;
+}
+</style>
 </div>
 </body>
 </html>
