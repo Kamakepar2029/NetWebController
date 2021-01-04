@@ -56,4 +56,4 @@ class NetController():
                 jsonnot["name"] = namepidmass[1]
                 jsonready.append(jsonnot)
             start+=1
-        return str(jsonready)
+        return str(jsonready).replace("'",'"')

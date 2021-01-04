@@ -4,7 +4,7 @@ from flask_mail import Mail, Message
 import pickledb
 import json
 
-def render_temp(argss,filename):
+def render_template(argss,filename):
     htmlfile = open('templates/'+filename,'r').read()
     for me in argss:
         htmlfile = htmlfile.replace('%'+me+'%',argss[me])
@@ -60,7 +60,8 @@ mail = Mail(app)
 
 @app.route('/')
 def welcome():
-    return 'Hello'
+    arguments = {}
+    return render_template(arguments,'index.html')
 
 @app.route('/openported')
 def port_opened():

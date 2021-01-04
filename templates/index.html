@@ -1,0 +1,46 @@
+<html>
+<head>
+<title></title>
+</head>
+<body>
+<header class="header">
+<h4>Ports</h4>
+</header>
+<div class="content">
+<div class="control"></div>
+<div class="content__ports">
+<table id="ports">
+<tr>
+  <th>Company</th>
+  <th>Q1</th>
+  <th>Q2</th>
+  <th>Q3</th>
+  <th>Q4</th>
+  </tr>
+
+</table>
+<script>
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'phones.json', false);
+xhr.send();
+if (xhr.status != 200) {
+  alert( xhr.status + ': ' + xhr.statusText );
+} else {
+  var data = JSON.parse( xhr.responseText );
+}
+
+var pillow = `
+<tr>
+  <th>TCP Ports</th>
+  <th>QIN</th>
+  <th>QOUT</th>
+  <th>Mode</th>
+  <th>PID</th>
+  <th>Program Name<th>
+  </tr>
+`;
+</script>
+</div>
+</div>
+</body>
+</html>
