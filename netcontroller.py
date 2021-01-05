@@ -53,7 +53,12 @@ class NetController():
                 jsonnot["typli"] = allsdf[start-2]
                 namepidmass = allsdf[start-1].split('/')
                 jsonnot["pid"] = namepidmass[0]
-                jsonnot["name"] = namepidmass[1]
+                try:
+                    jsonnot["name"] = namepidmass[1]
+                    pass
+                except:
+                    jsonnot["name"] = '-'
+                    pass
                 jsonready.append(jsonnot)
             start+=1
         return str(jsonready).replace("'",'"')
